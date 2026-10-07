@@ -1,5 +1,7 @@
 import Button from '@/components/Button'
 import { FilePicker, Result } from '@/components/FilePicker'
+import { randomUUID } from 'expo-crypto'
+import { File } from 'expo-file-system'
 import { NavigationBar } from 'expo-navigation-bar'
 import { useRouter } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
@@ -12,9 +14,13 @@ export default function Index() {
 	const router = useRouter()
 
 	const onFilePickedHandler = (result: Result) => {
-		if (result.uri) {
+		if (result.name && result.uri) {
+			const file = new File(result.uri)
+			const newName = randomUUID().replaceAll('-', '_')
+			file.rename(`${newName}.glb`)
+			console.log(file.uri)
 			setPicked(true)
-			setUri(result.uri)
+			setUri(file.uri)
 		}
 	}
 

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Pressable, Text, View } from 'react-native'
 
 type Result = {
+	name: string | null
 	uri: string | null
 	cancelled: boolean
 }
@@ -25,14 +26,14 @@ function FilePicker({ onFilePicked }: Props) {
 			})
 			if (!result.canceled) {
 				result.assets?.forEach((item) => {
-					onFilePicked({ uri: item.uri, cancelled: false })
+					onFilePicked({ name: item.name, uri: item.uri, cancelled: false  })
 					setTag('1 file selected')
 				})
 			} else {
-				onFilePicked({ uri: null, cancelled: true })
+				onFilePicked({ name: null, uri: null, cancelled: true })
 			}
 		} catch {
-			onFilePicked({ uri: null, cancelled: true })
+			onFilePicked({ name: null, uri: null, cancelled: true })
 		}
 	}
 

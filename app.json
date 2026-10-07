@@ -24,7 +24,7 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.palmy"
+      "package": "net.rekdev.palmy"
     },
     "web": {
       "output": "static",
