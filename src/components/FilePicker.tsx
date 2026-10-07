@@ -15,7 +15,6 @@ function FilePicker({ onFilePicked }: Props) {
 	const [tag, setTag] = useState<'No file selected' | '1 file selected'>(
 		'No file selected'
 	)
-	const [picked, setPicked] = useState<boolean>(false)
 
 	const onPressHandler = async () => {
 		try {
@@ -27,7 +26,6 @@ function FilePicker({ onFilePicked }: Props) {
 			if (!result.canceled) {
 				result.assets?.forEach((item) => {
 					onFilePicked({ uri: item.uri, cancelled: false })
-					setPicked(true)
 					setTag('1 file selected')
 				})
 			} else {
