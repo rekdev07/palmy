@@ -26,7 +26,7 @@ function FilePicker({ onFilePicked }: Props) {
 			})
 			if (!result.canceled) {
 				result.assets?.forEach((item) => {
-					onFilePicked({ name: item.name, uri: item.uri, cancelled: false  })
+					onFilePicked({ name: item.name, uri: item.uri, cancelled: false })
 					setTag('1 file selected')
 				})
 			} else {
